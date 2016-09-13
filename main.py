@@ -1,6 +1,12 @@
 import sys
+import argparse
 
 ASCII_SIZE = 256
+
+parser = argparse.ArgumentParser(description='A compression script using the lzw algorithm')
+parser.add_argument('-d', '--decompress', help='Decompress output produced by this program', action='store_true')
+parser.add_argument('-c', '--compress', help='Compress a string or a file', action='store_true')
+parser.add_argument('source', metavar='S', type=str, nargs='?', help='input to compress or decompress')
 
 def encode(s):
 	# Produce dict keyed by ascii characters with appropriate index value
@@ -49,12 +55,11 @@ def decode(l):
 
 
 def main():
-	if len(sys.argv) < 2:
-		raise ValueError("No string provided provided!")
-	s_to_encode = sys.argv[1]
-	print(encode(s_to_encode))
-
-
+    args = vars(parser.parse_args())
+    if args['decompress']:
+        print(decode(args['source']))
+    else:
+        print(encode(args['source']))
 if __name__ == '__main__':
 	main()
 	
