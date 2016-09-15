@@ -2,8 +2,9 @@
 An  implementation of the Lempel-Ziv-Welch compression + decompression algorithms
 
 ### Usage
+**REQUIRES PYTHON3**
 ```
-$ python main.py "My string that I want to encode"
+$ python3 main.py "My string that I want to encode"
 $ [output]
 ```
 
